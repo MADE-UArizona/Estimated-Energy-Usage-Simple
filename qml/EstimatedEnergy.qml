@@ -44,7 +44,7 @@ Item
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.topMargin: 5 * screenScaleFactor
-            text: '<p>Estimated Energy: --- J</p>'
+            text: '<p>Estimated Energy: --- MJ</p>'
             font.pixelSize: 14
             horizontalAlignment : Text.AlignHCenter
             verticalAlignment : Text.AlignVCenter 
