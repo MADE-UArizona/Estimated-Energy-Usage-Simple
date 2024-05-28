@@ -179,6 +179,7 @@ class EstimatedEnergy(Extension, QObject):
         bed_temp = first_extruder_stack.getProperty(
             "material_bed_temperature", "value")
 
+
         material_weights = print_info.materialWeights
         material_weight = 0
         if len(material_weights) > 1:
@@ -186,6 +187,8 @@ class EstimatedEnergy(Extension, QObject):
                 float(material_weights[0]), 3) + round(float(material_weights[1]), 3)
         if len(material_weights) == 1:
             material_weight = round(float(material_weights[0]), 3)
+        current_print_time=print_info.currentPrintTime
+            
 
         # Get from settings
         rated_power = float(Application.getInstance().getPreferences().getValue(
@@ -198,9 +201,7 @@ class EstimatedEnergy(Extension, QObject):
 
         if not not material_weight:
 
-            estimated_energy = 0.5 + (0.25 * print_temp +
-                                      0.25 * bed_temp +
-                                      0.25 * material_weight/density) * 0.5 * rated_power * bed_temp
+            estimated_energy = 0.0212 + .0000984 * current_print_time
             estimated_energy = round(estimated_energy, 0)
             Logger.log("d", "== Estimated == {}".format(estimated_energy))
 
