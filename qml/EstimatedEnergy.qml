@@ -28,7 +28,7 @@ Item
                 }
 
                 let value = UM.Preferences.getValue(preference);
-                estimatedEnergyText.text = `<p>Estimated Energy: ${value.toLocaleString()} J</p>`;
+                estimatedEnergyText.text = `<p>Estimated Energy: ${value.toLocaleString()} MJ</p>`;
             }
         }
 
