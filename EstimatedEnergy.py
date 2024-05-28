@@ -35,6 +35,8 @@ class EstimatedEnergy(Extension, QObject):
             "estimated_energy/print_temp", 200)
         Application.getInstance().getPreferences().addPreference(
             "estimated_energy/bed_temp", 60)
+        Application.getInstance().getPreferences().addPreference(
+            "estimated_energy/current_print_time", 300)
 
         Application.getInstance().getPreferences().addPreference(
             "estimated_energy/open_settings", False)
@@ -182,12 +184,19 @@ class EstimatedEnergy(Extension, QObject):
 
         material_weights = print_info.materialWeights
         material_weight = 0
+        current_print_times = print_info.currentPrintTime
+        current_print_time = 0
         if len(material_weights) > 1:
             material_weight = round(
                 float(material_weights[0]), 3) + round(float(material_weights[1]), 3)
         if len(material_weights) == 1:
             material_weight = round(float(material_weights[0]), 3)
-        current_print_time=print_info.currentPrintTime
+        if len(current_print_times) == 1:
+            current_print_time = round(float(current_print_times[0]), 3)
+        if len(current_print_times) > 1:
+            current_print_time = round(
+                float(current_print_times[0]), 3) + round(float(current_print_times[1]), 3)
+
             
 
         # Get from settings
